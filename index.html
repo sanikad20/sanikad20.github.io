@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -328,6 +327,36 @@
     font-family: var(--mono); font-size: .65rem; color: var(--muted);
     margin-top: 1.5rem; letter-spacing: .06em; opacity: .6;
   }
+  .project-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 1.5rem;
+  }
+  .project-repo-link {
+    font-family: var(--mono); font-size: .72rem; letter-spacing: .05em;
+    color: var(--teal); text-decoration: none;
+    border: 1px solid var(--rule); padding: .4rem .8rem;
+    display: inline-flex; align-items: center; gap: .4rem;
+    transition: border-color .2s, background .2s, transform .2s;
+  }
+  .project-repo-link:hover { border-color: var(--teal); background: var(--teal-lo); transform: translateY(-2px); }
+  .project-card:nth-child(2) .project-repo-link { color: var(--violet); }
+  .project-card:nth-child(2) .project-repo-link:hover { border-color: var(--violet); background: var(--violet-lo); }
+
+  /* ── GITHUB STATS STRIP ── */
+  .github-strip { margin-top: 3rem; }
+  .github-strip-label {
+    font-family: var(--mono); font-size: .7rem; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 1rem;
+  }
+  .github-strip-imgs { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .github-strip-imgs img { max-width: 100%; height: auto; border-radius: 4px; }
+  .github-more-link {
+    display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.5rem;
+    font-size: .85rem; color: var(--ink); text-decoration: none;
+    border-bottom: 1px solid var(--rule); padding-bottom: .3rem;
+    transition: color .2s, border-color .2s;
+  }
+  .github-more-link:hover { color: var(--teal); border-color: var(--teal); }
 
   /* ── ACHIEVEMENTS ── */
   .achieve-list { list-style: none; }
@@ -416,6 +445,8 @@
     .timeline { padding-left: 1.25rem; }
     .tl-item { padding-left: 1.25rem; }
     .tl-dot { left: -1.25rem; }
+    .github-strip-imgs { flex-direction: column; }
+    .github-strip-imgs img { width: 100%; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -628,7 +659,7 @@
     </div>
     <div class="about-stats stagger fade-up">
       <div class="stat-card"><div class="stat-num">9.11<span>/10</span></div><div class="stat-label">Current GPA</div></div>
-      <div class="stat-card"><div class="stat-num">4<span>+</span></div><div class="stat-label">Live Projects</div></div>
+      <div class="stat-card"><div class="stat-num">5<span>+</span></div><div class="stat-label">Live Projects</div></div>
       <div class="stat-card"><div class="stat-num">6<span>+</span></div><div class="stat-label">Hackathons</div></div>
       <div class="stat-card"><div class="stat-num">5<span>+</span></div><div class="stat-label">Tech Stacks</div></div>
     </div>
@@ -727,15 +758,30 @@
       <div class="project-stack">Flutter · Figma · Firebase · Dart</div>
       <h3 class="project-name">PawCrastinot</h3>
       <p class="project-desc">A gamified task management system where virtual pets react to your productivity — their moods rise and fall with your streaks. Features a leaderboard, mini-games, and a virtual pet food store to keep motivation high and procrastination low.</p>
-      <div class="project-date">January 2025</div>
+      <div class="project-footer">
+        <div class="project-date">January 2025</div>
+        <a href="https://github.com/sanikad20/Pawcrastinot" target="_blank" rel="noopener" class="project-repo-link">View Repo ↗</a>
+      </div>
     </div>
     <div class="project-card">
       <div class="project-glow"></div>
       <div class="project-stack">Flutter · Python · TensorFlow · FastAPI · Firebase</div>
       <h3 class="project-name">BrainLag</h3>
       <p class="project-desc">A cross-platform app predicting digital burnout from behavioural time-series data — screen time, app usage, sleep, communication patterns. Powered by an LSTM deep learning model deployed via FastAPI, classifying burnout as Low, Moderate, or High in real time.</p>
-      <div class="project-date">April 2026</div>
+      <div class="project-footer">
+        <div class="project-date">April 2026</div>
+        <a href="https://github.com/sanikad20/brainlag" target="_blank" rel="noopener" class="project-repo-link">View Repo ↗</a>
+      </div>
     </div>
+  </div>
+
+  <div class="github-strip fade-up">
+    <p class="github-strip-label">My GitHub Activity</p>
+    <div class="github-strip-imgs">
+      <img height="160" src="https://github-readme-stats.vercel.app/api?username=sanikad20&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=1A1916&title_color=5B8DEF&icon_color=3ECFB2&text_color=8A9099" alt="GitHub stats" />
+      <img height="160" src="https://github-readme-streak-stats.herokuapp.com/?user=sanikad20&theme=tokyonight&hide_border=true&background=1A1916&stroke=5B8DEF&ring=3ECFB2&fire=9B6EF0&currStreakLabel=3ECFB2" alt="GitHub streak" />
+    </div>
+    <a href="https://github.com/sanikad20?tab=repositories" target="_blank" rel="noopener" class="github-more-link">See all my repos on GitHub →</a>
   </div>
 </section>
 
