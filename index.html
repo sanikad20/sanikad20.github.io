@@ -114,6 +114,56 @@
     display: flex; flex-direction: column; justify-content: center;
     padding: 0 5vw; padding-top: 5rem; overflow: hidden;
   }
+  .hero-layout {
+    display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center;
+  }
+  .hero-photo-wrap {
+    position: relative; width: 320px; height: 400px; flex-shrink: 0;
+    opacity: 0; animation: slideUp .9s var(--ease-out-expo) .25s forwards;
+  }
+  .hero-photo-glow {
+    position: absolute; inset: -24px;
+    background: radial-gradient(circle, var(--blue-lo), var(--violet-lo) 45%, transparent 75%);
+    filter: blur(10px);
+    animation: glowPulse 5s ease-in-out infinite;
+  }
+  .hero-photo-frame {
+    position: absolute; inset: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1.5px solid var(--rule);
+    box-shadow: 0 0 0 1px var(--blue-lo), 0 30px 70px rgba(0,0,0,.55);
+    transition: border-color .4s, box-shadow .4s;
+  }
+  .hero-photo-wrap:hover .hero-photo-frame {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 1px var(--teal-lo), 0 0 40px var(--teal-lo), 0 30px 70px rgba(0,0,0,.55);
+  }
+  .hero-photo-frame::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(14,13,11,.5) 100%);
+    pointer-events: none;
+  }
+  .hero-photo-frame img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: saturate(1.02);
+  }
+  .hero-photo-corner {
+    position: absolute; width: 22px; height: 22px;
+    border-top: 1.5px solid var(--teal); border-left: 1.5px solid var(--teal);
+    top: -10px; left: -10px; opacity: .7;
+  }
+  .hero-photo-corner.br {
+    border-top: none; border-left: none;
+    border-bottom: 1.5px solid var(--teal); border-right: 1.5px solid var(--teal);
+    top: auto; left: auto; bottom: -10px; right: -10px;
+  }
+  @keyframes glowPulse { 0%,100% { opacity: .55; } 50% { opacity: .9; } }
+  @media (max-width: 900px) {
+    .hero-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-photo-wrap { width: 220px; height: 280px; order: -1; margin: 0 auto; }
+  }
   .hero-eyebrow {
     font-family: var(--mono); font-size: .78rem; letter-spacing: .14em;
     color: var(--teal); margin-bottom: 1.25rem; text-transform: uppercase;
@@ -632,18 +682,30 @@
 
 <!-- HERO -->
 <section id="home">
-  <p class="hero-eyebrow">Flutter Developer &amp; ML Engineer</p>
-  <h1 class="hero-name">Hi, I'm <em>Sanika</em> Deshmukh.</h1>
-  <p class="hero-sub">Building delightful mobile apps and intelligent systems — from gamified productivity tools to deep-learning burnout predictors. B.Tech student at VJTI Mumbai with a 9.11 GPA.</p>
-  <div class="hero-cta">
-    <a href="#projects" class="btn-primary"><span>View Projects →</span></a>
-    <a href="#contact" class="btn-ghost">Get in Touch</a>
+  <div class="hero-layout">
+    <div>
+      <p class="hero-eyebrow">Flutter Developer &amp; ML Engineer</p>
+      <h1 class="hero-name">Hi, I'm <em>Sanika</em> Deshmukh.</h1>
+      <p class="hero-sub">Building delightful mobile apps and intelligent systems — from gamified productivity tools to deep-learning burnout predictors. B.Tech student at VJTI Mumbai with a 9.11 GPA.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary"><span>View Projects →</span></a>
+        <a href="#contact" class="btn-ghost">Get in Touch</a>
+      </div>
+      <ul class="hero-socials">
+        <li><a href="https://www.linkedin.com/in/sanikad20/" target="_blank">LinkedIn ↗</a></li>
+        <li><a href="https://github.com/sanikad20" target="_blank">GitHub ↗</a></li>
+        <li><a href="mailto:sanika20deshmukh@gmail.com">Email ↗</a></li>
+      </ul>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-glow"></div>
+      <div class="hero-photo-frame">
+        <img src="assets/sanika-photo.png" alt="Sanika Deshmukh" />
+      </div>
+      <div class="hero-photo-corner"></div>
+      <div class="hero-photo-corner br"></div>
+    </div>
   </div>
-  <ul class="hero-socials">
-    <li><a href="https://www.linkedin.com/in/sanikad20/" target="_blank">LinkedIn ↗</a></li>
-    <li><a href="https://github.com/sanikad20" target="_blank">GitHub ↗</a></li>
-    <li><a href="mailto:sanika20deshmukh@gmail.com">Email ↗</a></li>
-  </ul>
   <div class="scroll-hint">Scroll to explore</div>
 </section>
 
@@ -659,8 +721,8 @@
     </div>
     <div class="about-stats stagger fade-up">
       <div class="stat-card"><div class="stat-num">9.11<span>/10</span></div><div class="stat-label">Current GPA</div></div>
-      <div class="stat-card"><div class="stat-num">5<span>+</span></div><div class="stat-label">Live Projects</div></div>
-      <div class="stat-card"><div class="stat-num">6<span>+</span></div><div class="stat-label">Hackathons</div></div>
+      <div class="stat-card"><div class="stat-num">2<span>+</span></div><div class="stat-label">Live Projects</div></div>
+      <div class="stat-card"><div class="stat-num">4<span>+</span></div><div class="stat-label">Hackathons</div></div>
       <div class="stat-card"><div class="stat-num">5<span>+</span></div><div class="stat-label">Tech Stacks</div></div>
     </div>
   </div>
@@ -818,49 +880,49 @@
   <div class="hobbies-grid fade-up">
 
     <div class="hobby-card hobby-dance">
-      <div class="hobby-emoji">💃</div>
+      <div class="hobby-emoji"></div>
       <div class="hobby-bg-text">DANCE</div>
       <h3 class="hobby-title">Dancing</h3>
       <p class="hobby-desc">Dance is my creative outlet and favourite way to unwind — whether it's a choreographed routine or just moving to good music.</p>
     </div>
 
     <div class="hobby-card hobby-art">
-      <div class="hobby-emoji">🎨</div>
+      <div class="hobby-emoji"></div>
       <div class="hobby-bg-text">ART</div>
       <h3 class="hobby-title">Visual Art</h3>
       <p class="hobby-desc">Sketching, digital illustration, and poster design. My interest in aesthetics feeds directly into my UI/UX work.</p>
     </div>
 
     <div class="hobby-card hobby-sing">
-      <div class="hobby-emoji">🎵</div>
+      <div class="hobby-emoji"></div>
       <div class="hobby-bg-text">MUSIC</div>
       <h3 class="hobby-title">Music & Singing</h3>
       <p class="hobby-desc">Music is always on — while coding, commuting, or just existing. I sing whenever I get the chance, no stage required.</p>
     </div>
 
     <div class="hobby-card hobby-cricket">
-      <div class="hobby-emoji">🏏</div>
+      <div class="hobby-emoji"></div>
       <div class="hobby-bg-text">CRICKET</div>
       <h3 class="hobby-title">Cricket</h3>
       <p class="hobby-desc">Playing and watching — cricket is a serious passion. Match days are non-negotiable, especially when India plays.</p>
     </div>
 
     <div class="hobby-card hobby-football">
-      <div class="hobby-emoji">⚽</div>
+      <div class="hobby-emoji"></div>
       <div class="hobby-bg-text">FOOTBALL</div>
       <h3 class="hobby-title">Football</h3>
       <p class="hobby-desc">A sport that keeps me sharp, team-oriented, and energised. I enjoy both playing and following the game.</p>
     </div>
 
     <div class="hobby-card hobby-badminton">
-      <div class="hobby-emoji">🏸</div>
+      <div class="hobby-emoji"></div>
       <div class="hobby-bg-text">BADMINTON</div>
       <h3 class="hobby-title">Badminton</h3>
       <p class="hobby-desc">Fast-paced, strategic, and social — badminton checks all the boxes for a good evening sport.</p>
     </div>
 
     <div class="hobby-card hobby-anime">
-      <div class="hobby-emoji">🎬</div>
+      <div class="hobby-emoji"></div>
       <div class="hobby-bg-text">WATCH</div>
       <h3 class="hobby-title">Anime · Sci-Fi · Mystery</h3>
       <p class="hobby-desc">From thought-provoking anime to complex sci-fi narratives and layered mystery series — I'm drawn to storytelling that makes you think.</p>
@@ -869,15 +931,15 @@
   </div>
 
   <div class="vibe-bar fade-up">
-    <span class="vibe-tag">🎶 Music on always</span>
-    <span class="vibe-tag">☕ Chai-fuelled</span>
-    <span class="vibe-tag">📚 Forever curious</span>
-    <span class="vibe-tag">🌙 Late-night coder</span>
-    <span class="vibe-tag">🤝 Team player</span>
-    <span class="vibe-tag">🏆 Competitive spirit</span>
-    <span class="vibe-tag">🌌 Sci-fi dreamer</span>
-    <span class="vibe-tag">🕵️ Mystery addict</span>
-    <span class="vibe-tag">⛩️ Anime fan</span>
+    <span class="vibe-tag"> Music on always</span>
+    <span class="vibe-tag"> Chai-fuelled</span>
+    <span class="vibe-tag">Forever curious</span>
+    <span class="vibe-tag"> Late-night coder</span>
+    <span class="vibe-tag"> Team player</span>
+    <span class="vibe-tag"> Competitive spirit</span>
+    <span class="vibe-tag"> Sci-fi dreamer</span>
+    <span class="vibe-tag"> Mystery addict</span>
+    <span class="vibe-tag"> Anime fan</span>
   </div>
 </section>
 
